@@ -46,7 +46,7 @@ public class Ex1 {
     public static String[] split(String s)
     {
         String[] spilted = null;
-        if (s.isEmpty() || !s.contains("b"))
+        if (s.isEmpty() || !s.contains("b") || (s.contains(" ")) )
         {
             return null; // invalid input
         }
@@ -58,10 +58,10 @@ public class Ex1 {
         return spilted; // Return array with number and base
     }
         /**
-         * Convert the given number (num) to a decimal representation (as int).
+         * Convert the given number (num) to a decimal- base10 representation (as int).
          * It the given number is not in a valid format returns -1.
          * @param num a String representing a number in basis [2,16]
-         * @return
+         * @return - int representing a number
          */
 
         public static int number2Int (String num)

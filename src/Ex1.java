@@ -68,20 +68,21 @@ public class Ex1 {
         {
             int decimalNum = 0;  // This will store the final decimal result
             String [] array = split(num);
-            String baseS = array[1] ;
-            int base = Integer.parseInt(baseS);
-            for (int i = 0; i < num.length(); i++)
-            {
-                char c = num.charAt(i);  // Get the current character
-                // Convert the character to its numeric value using the converted function
-                int digitValue = converted(String.valueOf(c));  // Convert char to String and use converted function
-                if (digitValue == -1)
-                {
-                    return -1;  // Return -1 for invalid character in the number part
+            if (array != null) { //הוספתי בגלל הנאל
+                String baseS = array[1];
+                int base = Integer.parseInt(baseS);
+                for (int i = 0; i < array[0].length(); i++) {
+                    char c = num.charAt(i);  // Get the current character
+                    // Convert the character to its numeric value using the converted function
+                    int digitValue = converted(String.valueOf(c));  // Convert char to String and use converted function
+                    if (digitValue == -1) {
+                        return -1;  // Return -1 for invalid character in the number part
+                    }
+                    decimalNum += digitValue * Math.pow(base, num.length() - 1 - i);
                 }
-                decimalNum += digitValue * Math.pow(base, num.length() - 1 - i);
+                return decimalNum;  // Return the final result
             }
-            return decimalNum;  // Return the final result
+            return -1; // הוספתי בגלל הנאל
         }
 
 

@@ -12,7 +12,7 @@
  */
 public class Ex1 {
     //פונקצית עזר שלי
-    // this function convert string to a numeric value based on it content ( numbers/ letters)
+    // This function convert string to a numeric value based on it content ( numbers/ letters)
     public static int converted(String s)
     {
         // if conatain only digits

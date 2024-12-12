@@ -66,7 +66,8 @@ public class Ex1 {
 
         public static int number2Int (String num)
         {
-            if(isNumber(num)) {
+            if(isNumber(num))
+            {
                 int decimalNum = 0;  // This will store the final decimal result
                 int base; //int
                 String[] array = split(num);
@@ -168,20 +169,26 @@ public class Ex1 {
                     return ""; // Invalid base
                 }
                 String ans = ""; // empty string
-                while (num > 0) {
-                    int remainder = num % base;
-                    // convert the remainder to char
-                    char digit;
-                    if (remainder < 10) {
-                        digit = (char) ('0' + remainder); // Digits 0-9
-                    } else {
-                        digit = (char) ('A' + (remainder - 10)); // Letters A-F
-                    }
-                    //
-                    ans = digit + ans; // add to beginning
-                    num = num / base; //
+                if (num ==0 )
+                {
+                    return "0";
                 }
-                return ans;
+                else {
+                    while (num > 0) {
+                        int remainder = num % base;
+                        // convert the remainder to char
+                        char digit;
+                        if (remainder < 10) {
+                            digit = (char) ('0' + remainder); // Digits 0-9
+                        } else {
+                            digit = (char) ('A' + (remainder - 10)); // Letters A-F
+                        }
+                        //
+                        ans = digit + ans; // add to beginning
+                        num = num / base; //
+                    }
+                    return ans;
+                }
             }
 
         /**
@@ -192,6 +199,8 @@ public class Ex1 {
          */
         public static boolean equals(String n1, String n2) {
             boolean ans = true;
+            if(!isNumber(n1) && !isNumber(n2))
+                ans =false;
             int n1Base10= number2Int(n1);
             int n2Base10= number2Int(n2);
             if (n1Base10 != n2Base10) {

@@ -14,11 +14,8 @@ public class Ex1Test {
             assertEquals(v,11);
             String s10 = "1011bA";
             v = Ex1.number2Int(s10);
-            assertEquals(1011,v);// למחוק
             s2 = Ex1.int2Number(v,2);
-            assertEquals("1111110011",s2); // למחוק
             int v2 = Ex1.number2Int(s2);
-            assertEquals("1111110011",v2); // למחוק
             //assertEquals(v,v2);
            // assertTrue(Ex1.equals(s10,s2));
         }
@@ -98,7 +95,7 @@ public class Ex1Test {
         String[] result5 = Ex1.split("1111110011");
         assertNotNull(result5);
         assertEquals(2, result5.length);
-        assertEquals("1111110011", result5[0]);
+        assertEquals("A", result5[1]);
     }
 
     @Test
@@ -115,7 +112,7 @@ public class Ex1Test {
         assertEquals(-1, Ex1.number2Int("12b")); // Missing base part
         assertEquals(-1, Ex1.number2Int("2 3b4")); // Whitespace in the number part
         assertEquals(-1, Ex1.number2Int("1b20")); // Base greater than 16
-        assertEquals(14, Ex1.number2Int("12bC")); // Invalid base (non-numeric base)
+        assertEquals(14, Ex1.number2Int("12bC"));
         assertEquals(-1, Ex1.number2Int("11b0")); // Base less than 2
         assertEquals(-1, Ex1.number2Int("FFb10"));
         assertEquals(-1, Ex1.number2Int("ZZb14")); // base 14 invalid

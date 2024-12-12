@@ -108,6 +108,20 @@ public class Ex1 {
                 else if (baseInt < 2 || baseInt > 16) {
                     return false; // Invalid
                 }
+                if (baseInt > 9)
+                {
+                    for (int j = 0; j < divided[1].length(); j++)
+                    {
+                        char current = divided[1].charAt(j);
+                        if (!Character.isLetter(current)) {  // Check if the character is not a letter
+                            return false;
+                        }
+                        if (current < 'A' || current > 'G') {  // make sure the letter is between A and G
+                            return false;  //only A-G are allowed
+                        }
+                    }
+
+                }
                 // check each digit in number part
                 char[] chars = number.toCharArray();
                 for (int i = 0; i < chars.length; i++) {

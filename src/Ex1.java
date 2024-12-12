@@ -12,7 +12,8 @@
  */
 public class Ex1 {
     //helper function
-    // This function convert string to a numeric value based on it content ( numbers/ letters)
+    // This function convert string to a numeric value based on the content ( numbers/ letters)
+    //and return an integer
     public static int converted(String s)
     {
         // if conatain only digits
@@ -23,7 +24,7 @@ public class Ex1 {
         }
         else if (s.matches("[A-G]+"))
         {
-            // If it's all letters from A to G, convert ti uts corresponding numbers
+            // If it's all letters from A to G, convert it to corresponding numbers
             int result = 0;
             for (int i = 0; i < s.length(); i++)
             {
@@ -38,8 +39,8 @@ public class Ex1 {
     }
 
     /**
-     * פונקצית עזר שלי
-     * This static function -split a given string into number and base
+     * helper function
+     * This static function :split a given string -into number and base parts
      * @param a String representing a number
      * @return array with the number in index 0 and base in index 1
      **/
@@ -50,7 +51,7 @@ public class Ex1 {
         {
             return null; // invalid input
         }
-        if (s.contains("b")) {
+        if (s.contains("b")) { //for splitting
             spilted = s.split("b");
             if (spilted.length != 2 || spilted[0].isEmpty() || spilted[1].isEmpty())
             {
@@ -58,7 +59,7 @@ public class Ex1 {
             }
         }
         else {
-            // If no "b" is found, treat the entire string as the number part
+            // If no "b" was found, treat the entire string as the number part
             spilted = new String[]{s,"A"};
         }
         return spilted; // Return array with number and base
@@ -74,8 +75,8 @@ public class Ex1 {
         {
             if(isNumber(num))
             {
-                int decimalNum = 0;  // This will store the final decimal result
-                int base; //int
+                int decimalNum = 0;  // final decimal result
+                int base;
                 String[] array = split(num);
                 if (array != null) {
                         String baseS = array[1];
@@ -83,10 +84,10 @@ public class Ex1 {
 
                     for (int i = 0; i < array[0].length(); i++) {
                         char c = array[0].charAt(i);  // Get the current character
-                        // Convert the character to its numeric value using the converted function
+                        // Convert char to numeric value using converted function
                         int digitValue = converted(String.valueOf(c));  // Convert char to String and use converted function
                         if (digitValue == -1) {
-                            return -1;  // Return -1 for invalid character in the number part
+                            return -1;  // Return -1 for invalid char
                         }
                         decimalNum += digitValue * Math.pow(base, array[0].length() - 1 - i);
                     }
@@ -142,7 +143,7 @@ public class Ex1 {
                         if (Character.getNumericValue(d) >= baseInt) {
                             return false; // Invalid
                         }
-                    } else if (d >= 'A' && d <= 'G') // od string contains letters not digits
+                    } else if (d >= 'A' && d <= 'G') // if string contains letters not digits
                     {
                         if ((d - 'A' + 10) >= baseInt) {
                             return false; // Invalid
@@ -186,7 +187,7 @@ public class Ex1 {
                         }
                         //
                         ans = digit + ans; // add to beginning
-                        num = num / base; //
+                        num = num / base; // repeat
                     }
                     return ans;
                 }
@@ -223,7 +224,7 @@ public class Ex1 {
                 int ans = 0;
                 for (int i=0; i < arr.length ;i++)
                 {
-                    if (number2Int(arr[i]) > number2Int(arr[ans]))
+                    if (number2Int(arr[i]) > number2Int(arr[ans])) // if current value bigger than max value
                     {
                         ans = i;
                     }

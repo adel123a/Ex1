@@ -16,8 +16,6 @@ public class Ex1Test {
             v = Ex1.number2Int(s10);
             s2 = Ex1.int2Number(v,2);
             int v2 = Ex1.number2Int(s2);
-            //assertEquals(v,v2);
-           // assertTrue(Ex1.equals(s10,s2));
         }
 
         @Test
@@ -37,8 +35,8 @@ public class Ex1Test {
         void int2NumberTest() {
             assertEquals("5A", Ex1.int2Number(90, 16));
             assertEquals("100", Ex1.int2Number(256, 16));
-            assertEquals("", Ex1.int2Number(2, 18)); // Invalid base, should return ""
-            assertEquals("", Ex1.int2Number(-5, 10)); // Invalid number, should return ""
+            assertEquals("", Ex1.int2Number(2, 18)); // Invalid base
+            assertEquals("", Ex1.int2Number(-5, 10)); // Invalid number
             assertEquals("0", Ex1.int2Number(0, 5));
             assertEquals("0", Ex1.int2Number(0, 10));
             assertEquals("1000", Ex1.int2Number(8, 2));
@@ -52,11 +50,7 @@ public class Ex1Test {
             assertEquals(1, Ex1.maxIndex(arr2));
 
             String[] arr3 = {"2bA", "4bA", "7bA"};
-            //assertEquals("2", Ex1.maxIndex(arr4));
-
-            String[] arr4 = {"2bA", "2bA", "2bA"};
-           // assertEquals("0", Ex1.maxIndex(arr5));
-
+            assertEquals("2", Ex1.maxIndex(arr3));
 
         }
 
@@ -75,7 +69,7 @@ public class Ex1Test {
     @Test
     void split() {
         String[] result1 = Ex1.split("1011b2");
-        assertNotNull(result1); // Should not return null
+        assertNotNull(result1);
         assertEquals(2, result1.length); // two parts
         assertEquals("1011", result1[0]); // number
         assertEquals("2", result1[1]); // base
@@ -89,7 +83,7 @@ public class Ex1Test {
         assertEquals("01", result3[0]);
         assertEquals("2", result3[1]);
 
-        String[] result4 = Ex1.split("12345b"); // no base side
+        String[] result4 = Ex1.split("12345b"); // no base part
         assertNull(result4);
 
         String[] result5 = Ex1.split("1111110011");

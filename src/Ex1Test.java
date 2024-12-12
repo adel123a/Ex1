@@ -14,9 +14,12 @@ public class Ex1Test {
             assertEquals(v,11);
             String s10 = "1011bA";
             v = Ex1.number2Int(s10);
+            assertEquals(1011,v);// למחוק
             s2 = Ex1.int2Number(v,2);
+            assertEquals("1111110011",s2); // למחוק
             int v2 = Ex1.number2Int(s2);
-           // assertEquals(v,v2);
+            assertEquals("1111110011",v2); // למחוק
+            //assertEquals(v,v2);
            // assertTrue(Ex1.equals(s10,s2));
         }
 
@@ -92,6 +95,10 @@ public class Ex1Test {
         String[] result4 = Ex1.split("12345b"); // no base side
         assertNull(result4);
 
+        String[] result5 = Ex1.split("1111110011");
+        assertNotNull(result5);
+        assertEquals(2, result5.length);
+        assertEquals("1111110011", result5[0]);
     }
 
     @Test

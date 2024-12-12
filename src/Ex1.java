@@ -50,10 +50,16 @@ public class Ex1 {
         {
             return null; // invalid input
         }
-        spilted = s.split("b"); // spilt string 2 parts number and base
-        if (spilted.length != 2 || spilted[0].isEmpty() || spilted[1].isEmpty())
-        {
-            return null;
+        if (s.contains("b")) {
+            spilted = s.split("b");
+            if (spilted.length != 2 || spilted[0].isEmpty() || spilted[1].isEmpty())
+            {
+                return null;
+            }
+        }
+        else {
+            // If no "b" is found, treat the entire string as the number part
+            spilted = new String[]{s,"A"};
         }
         return spilted; // Return array with number and base
     }
@@ -66,35 +72,27 @@ public class Ex1 {
 
         public static int number2Int (String num)
         {
-            if(isNumber(num))
-            {
+            if (isNumber(num)) {
                 int decimalNum = 0;  // This will store the final decimal result
                 int base; //int
                 String[] array = split(num);
                 if (array != null) {
-                    if (array.length == 1)  // if the length is 1 it means the number in base 10
-                    {
-                        base = 10;
+                    String baseS = array[1];
+                    base = converted(baseS); //  base in numeric value
+                }
+                for (int i = 0; i < array[0].length(); i++) {
+                    char c = array[0].charAt(i);  // Get the current character
+                    // Convert the character to its numeric value using the converted function
+                    int digitValue = converted(String.valueOf(c));  // Convert char to String and use converted function
+                    if (digitValue == -1) {
+                        return -1;  // Return -1 for invalid character in the number part
                     }
-                    else {
-                        String baseS = array[1];
-                        base = converted(baseS); //  base in numeric value
-                    }
-                    for (int i = 0; i < array[0].length(); i++) {
-                        char c = array[0].charAt(i);  // Get the current character
-                        // Convert the character to its numeric value using the converted function
-                        int digitValue = converted(String.valueOf(c));  // Convert char to String and use converted function
-                        if (digitValue == -1) {
-                            return -1;  // Return -1 for invalid character in the number part
-                        }
-                        decimalNum += digitValue * Math.pow(base, array[0].length() - 1 - i);
-                    }
-                    return decimalNum;  // Return the final result
+                    decimalNum += digitValue * Math.pow(base, array[0].length() - 1 - i);
                 }
                 return -1;
             }
-            return -1;
         }
+
 
 
         /**

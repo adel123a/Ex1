@@ -46,7 +46,7 @@ public class Ex1 {
     public static String[] split(String s)
     {
         String[] spilted = null;
-        if (s.isEmpty() || !s.contains("b") || (s.contains(" ")) )
+        if (s.isEmpty()  || (s.contains(" ")) )
         {
             return null; // invalid input
         }
@@ -66,23 +66,33 @@ public class Ex1 {
 
         public static int number2Int (String num)
         {
-            int decimalNum = 0;  // This will store the final decimal result
-            String [] array = split(num);
-            if (array != null) { //הוספתי בגלל הנאל
-                String baseS = array[1];
-                int base = Integer.parseInt(baseS);
-                for (int i = 0; i < array[0].length(); i++) {
-                    char c = array[0].charAt(i);  // Get the current character
-                    // Convert the character to its numeric value using the converted function
-                    int digitValue = converted(String.valueOf(c));  // Convert char to String and use converted function
-                    if (digitValue == -1) {
-                        return -1;  // Return -1 for invalid character in the number part
+            if(isNumber(num)) {
+                int decimalNum = 0;  // This will store the final decimal result
+                int base; //int
+                String[] array = split(num);
+                if (array != null) {
+                    if (array.length == 1)  // if the length is 1 it means the number in base 10
+                    {
+                        base = 10;
                     }
-                    decimalNum += digitValue * Math.pow(base, array[0].length() - 1 - i);
+                    else {
+                        String baseS = array[1];
+                        base = converted(baseS); //  base in numeric value
+                    }
+                    for (int i = 0; i < array[0].length(); i++) {
+                        char c = array[0].charAt(i);  // Get the current character
+                        // Convert the character to its numeric value using the converted function
+                        int digitValue = converted(String.valueOf(c));  // Convert char to String and use converted function
+                        if (digitValue == -1) {
+                            return -1;  // Return -1 for invalid character in the number part
+                        }
+                        decimalNum += digitValue * Math.pow(base, array[0].length() - 1 - i);
+                    }
+                    return decimalNum;  // Return the final result
                 }
-                return decimalNum;  // Return the final result
+                return -1;
             }
-            return -1; // הוספתי בגלל הנאל
+            return -1;
         }
 
 
@@ -144,7 +154,7 @@ public class Ex1 {
         }
 
         /**
-         * Calculate the number representation (in basis base)
+         * Calculate the number representation (in basis base) - from base 10 to target base
          * of the given natural number (represented as an integer).
          * If num<0 or base is not in [2,16] the function should return "" (the empty String).
          * @param num the natural number (include 0).
@@ -153,7 +163,6 @@ public class Ex1 {
          */
         public static String int2Number(int num, int base)
             {
-                /// note - in this function i didnt use number2int function. check again if i can use it or there is no need
                 // Validate input
                 if (base < 2 || base > 16) {
                     return ""; // Invalid base
@@ -169,7 +178,7 @@ public class Ex1 {
                         digit = (char) ('A' + (remainder - 10)); // Letters A-F
                     }
                     //
-                    ans = digit + ans; // add to beggingng
+                    ans = digit + ans; // add to beginning
                     num = num / base; //
                 }
                 return ans;
@@ -179,7 +188,7 @@ public class Ex1 {
          * Checks if the two numbers have the same value.
          * @param n1 first number
          * @param n2 second number
-         * @return true iff the two numbers have the same values.
+         * @return true if the two numbers have the same values.
          */
         public static boolean equals(String n1, String n2) {
             boolean ans = true;

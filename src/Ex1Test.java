@@ -71,7 +71,7 @@ public class Ex1Test {
         assertEquals("01", result3[0]);
         assertEquals("2", result3[1]);
 
-        String[] result4 = Ex1.split("12345"); // no "b"
+        String[] result4 = Ex1.split("12345b"); // no base side
         assertNull(result4);
 
     }
@@ -80,22 +80,22 @@ public class Ex1Test {
     void number2Int() {
         assertEquals(11, Ex1.number2Int("1011b2")); // Binary number
         assertEquals(-1, Ex1.number2Int("FFb16")); //  wrong format 16 is prohibited - need G
-//        assertEquals(123, Ex1.number2Int("123b10")); // base 10
-//        assertEquals(0, Ex1.number2Int("0b2")); //
-//        assertEquals(-1, Ex1.number2Int("6B8")); // B
-//        assertEquals(-1, Ex1.number2Int("12b1")); // Invalid base
-//        assertEquals(-1, Ex1.number2Int("")); // Empty
-//        assertEquals(-1, Ex1.number2Int(null)); // Null
-//        assertEquals(-1, Ex1.number2Int("b8")); // Missing number part
-//        assertEquals(-1, Ex1.number2Int("12b")); // Missing base part
-//        assertEquals(-1, Ex1.number2Int("2 3b4")); // Whitespace in the number part
-//        assertEquals(-1, Ex1.number2Int("1b20")); // Base greater than 16
-//        assertEquals(12, Ex1.number2Int("12bA")); // Invalid base (non-numeric base)
-//        assertEquals(-1, Ex1.number2Int("11b0")); // Base less than 2
-//        assertEquals(255, Ex1.number2Int("FFb10"));
-//        assertEquals(-1, Ex1.number2Int("ZZb14")); // base 14 invalid
-//        assertEquals(-1, Ex1.number2Int("22b2b2")); // multiple b
-//        assertEquals(-1, Ex1.number2Int("12b A")); // Whitespace after 'b'
+        assertEquals(-1, Ex1.number2Int("123b10")); // base 10
+        assertEquals(0, Ex1.number2Int("0b2")); //
+        assertEquals(-1, Ex1.number2Int("6B8")); // B
+        assertEquals(-1, Ex1.number2Int("12b1")); // Invalid base
+        assertEquals(-1, Ex1.number2Int("")); // Empty
+        assertEquals(-1, Ex1.number2Int("null")); // Null
+        assertEquals(-1, Ex1.number2Int("b8")); // Missing number part
+        assertEquals(-1, Ex1.number2Int("12b")); // Missing base part
+        assertEquals(-1, Ex1.number2Int("2 3b4")); // Whitespace in the number part
+        assertEquals(-1, Ex1.number2Int("1b20")); // Base greater than 16
+        assertEquals(14, Ex1.number2Int("12bC")); // Invalid base (non-numeric base)
+        assertEquals(-1, Ex1.number2Int("11b0")); // Base less than 2
+        assertEquals(-1, Ex1.number2Int("FFb10"));
+        assertEquals(-1, Ex1.number2Int("ZZb14")); // base 14 invalid
+        assertEquals(-1, Ex1.number2Int("22b2b2")); // multiple b
+        assertEquals(-1, Ex1.number2Int("12b A")); // Whitespace after 'b'
     }
 
     @Test
@@ -115,11 +115,19 @@ public class Ex1Test {
         assertFalse(Ex1.isNumber("123b16"));
         assertFalse(Ex1.isNumber("123b17")); // Invalid base 17
         assertTrue(Ex1.isNumber("EFbG"));
-//        assertTrue(Ex1.isNumber("135"));
+        assertTrue(Ex1.isNumber("135"));
         assertTrue(Ex1.isNumber("135bA"));
     }
 
     @Test
     void testEquals() {
+        assertTrue(Ex1.equals("100", "100"));
+//        assertFalse(Ex1.equals("100", "101"));
+          assertTrue(Ex1.equals("100b2", "8bA"));
+//        assertFalse(Ex1.equals("101b3", "4b9"));
+//        assertTrue(Ex1.equals("100bB", "100bB"));
+//        assertFalse(Ex1.equals("100bC", "100bH"));
+//        assertFalse(Ex1.equals("", ""));
+//        assertFalse(Ex1.equals("100b", "100"));
     }
  }

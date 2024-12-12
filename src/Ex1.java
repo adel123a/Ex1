@@ -72,13 +72,13 @@ public class Ex1 {
                 String baseS = array[1];
                 int base = Integer.parseInt(baseS);
                 for (int i = 0; i < array[0].length(); i++) {
-                    char c = num.charAt(i);  // Get the current character
+                    char c = array[0].charAt(i);  // Get the current character
                     // Convert the character to its numeric value using the converted function
                     int digitValue = converted(String.valueOf(c));  // Convert char to String and use converted function
                     if (digitValue == -1) {
                         return -1;  // Return -1 for invalid character in the number part
                     }
-                    decimalNum += digitValue * Math.pow(base, num.length() - 1 - i);
+                    decimalNum += digitValue * Math.pow(base, array[0].length() - 1 - i);
                 }
                 return decimalNum;  // Return the final result
             }
